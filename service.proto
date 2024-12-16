@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package myservice;
+
+service MyService {
+  rpc RegisterRoom (RegisterRoomRequest) returns (RegisterRoomResponse);
+  rpc UpdateRoomStatus (UpdateRoomStatusRequest) returns (UpdateRoomStatusResponse);
+  rpc GetRoomById (GetRoomByIdRequest) returns (GetRoomByIdResponse);
+  rpc GetRoomByNum (GetRoomByNumRequest) returns (GetRoomByNumResponse);
+}
+
+message RegisterRoomRequest {
+  int32 room_number = 1;
+  string room_type = 2;
+  string status = 3;
+}
+
+message RegisterRoomResponse {
+  string message = 1;
+  int32 room_id = 2;
+}
+
+message UpdateRoomStatusRequest {
+  int32 room_id = 1;
+  string status = 2;
+}
+
+message UpdateRoomStatusResponse {
+  string message = 1;
+}
+
+message GetRoomByIdRequest {
+  int32 room_id = 1;
+}
+
+message GetRoomByIdResponse {
+  int32 room_id = 1;
+  int32 room_number = 2;
+  string room_type = 3;
+  string status = 4;
+}
+
+message GetRoomByNumRequest {
+  int32 room_number = 1;
+}
+
+message GetRoomByNumResponse {
+  int32 room_id = 1;
+  int32 room_number = 2;
+  string room_type = 3;
+  string status = 4;
+}
